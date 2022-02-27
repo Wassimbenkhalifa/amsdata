@@ -1,16 +1,28 @@
 package com.sip.ams.entities;
-import lombok.Data;
-import javax.persistence.*; 
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "role")
+
 public class Role {
- @Id
- @GeneratedValue(strategy = GenerationType.AUTO)
- @Column(name = "role_id")
- private int id;
- @Column(name = "role")
- private String role;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "role_id")
+    private int id;
+    @Column(name = "role")
+    private String role;
+public Role(String role) {
+this.role = role;
+}
+public Role() {
+super();
+}
+public Role(int id, String role) {
+super();
+this.id = id;
+this.role = role;
+}
 public int getId() {
 return id;
 }
@@ -23,4 +35,8 @@ return role;
 public void setRole(String role) {
 this.role = role;
 }
+
+
+
+
 }
