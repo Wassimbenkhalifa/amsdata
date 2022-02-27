@@ -97,7 +97,7 @@ public class ArticleController {
 			e.printStackTrace();
 		}
     	
-		/* article.setPicture(fileName.toString());*/
+		 article.setPicture(fileName.toString());
 		 /// Fin Upload
     	 articleRepository.save(article);
     	 return "redirect:list";
@@ -142,4 +142,16 @@ public class ArticleController {
         model.addAttribute("articles", articleRepository.findAll());
         return "article/listArticles";
     }
+    
+    @GetMapping("show/{id}")
+    public String showArticleDetails(@PathVariable("id") long id, Model model) {
+    	Article article = articleRepository.findById(id)
+            .orElseThrow(()->new IllegalArgumentException("Invalid provider Id:" + id));
+    	
+        model.addAttribute("article", article);
+        
+        return "article/showArticle";
+    }
+
+
 }
